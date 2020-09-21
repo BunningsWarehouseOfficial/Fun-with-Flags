@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Fun with Flags</string>
+
+    <!-- Main Activity -->
+    <string name="start_points">Starting Points\n %d</string>
+    <string name="target_points">Target Points\n %d</string>
+    <string name="start_button">Start!</string>
+
+    <!-- Flags Activity -->
+    <string name="status_points">Current Score: %d</string>
+    <string name="status_victory">You won!</string>
+    <string name="status_loss">You lost!</string>
+
+    <!-- Select Question Activity -->
+    <string name="back_button">Go Back</string>
+
+    <!-- Answer Question Activity -->
+
+</resources>
