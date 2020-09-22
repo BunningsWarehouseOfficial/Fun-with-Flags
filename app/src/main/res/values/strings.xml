@@ -19,5 +19,6 @@
     <string name="question_penalty">Penalty: %d</string>
 
     <!-- Answer Question Activity -->
-
+    <string name="question_text">{question}</string>
+    <string name="answer_text">{answer}</string>
 </resources>
