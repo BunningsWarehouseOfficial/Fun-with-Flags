@@ -10,7 +10,7 @@
         android:id="@+id/layoutSelectorFrame"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/questionsFrame"
+        app:layout_constraintBottom_toTopOf="@+id/flagsFrame"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -18,7 +18,7 @@
     </FrameLayout>
 
     <FrameLayout
-        android:id="@+id/questionsFrame"
+        android:id="@+id/flagsFrame"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/statusBarFrame"
@@ -35,7 +35,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/questionsFrame">
+        app:layout_constraintTop_toBottomOf="@+id/flagsFrame">
 
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
