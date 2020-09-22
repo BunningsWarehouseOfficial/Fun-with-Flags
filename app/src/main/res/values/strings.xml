@@ -13,6 +13,10 @@
 
     <!-- Select Question Activity -->
     <string name="back_button">Go Back</string>
+    <string name="question_header">Q%d</string>
+    <string name="question_special"> (Special)</string>
+    <string name="question_points">Points: %d</string>
+    <string name="question_penalty">Penalty: %d</string>
 
     <!-- Answer Question Activity -->
 
