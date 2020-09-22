@@ -5,7 +5,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-    <ImageView
+    <ImageButton
         android:id="@+id/flagImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,20 +15,22 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
+        android:background="@null"
         app:layout_constraintBottom_toTopOf="@+id/flagName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/flag_ag" />
+        app:srcCompat="@drawable/flag_ag"
+        tools:srcCompat="@drawable/flag_ag" />
 
     <TextView
         android:id="@+id/flagName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:text="Antigua and Barbuda"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/flagImage" />
+        app:layout_constraintTop_toBottomOf="@+id/flagImage"
+        tools:text="Flag Name" />
 </androidx.constraintlayout.widget.ConstraintLayout>

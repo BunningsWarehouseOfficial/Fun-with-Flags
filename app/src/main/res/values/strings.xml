@@ -8,6 +8,7 @@
     <string name="start_button">Start!</string>
 
     <!-- Flags Activity -->
+    <string name="One Row or Column"
     <string name="status_points">Current Score: %d</string>
     <string name="status_victory">You won!</string>
     <string name="status_loss">You lost!</string>
@@ -18,8 +19,4 @@
     <string name="question_special"> (Special)</string>
     <string name="question_points">Points: %d</string>
     <string name="question_penalty">Penalty: %d</string>
-
-    <!-- Answer Question Activity -->
-    <string name="question_text">{question}</string>
-    <string name="answer_text">{answer}</string>
 </resources>
