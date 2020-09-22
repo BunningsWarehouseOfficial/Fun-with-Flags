@@ -2,8 +2,9 @@
     <string name="app_name">Fun with Flags</string>
 
     <!-- Main Activity -->
-    <string name="start_points">Starting Points\n %d</string>
-    <string name="target_points">Target Points\n %d</string>
+    <string name="app_logo">App Logo</string>
+    <string name="start_points">Starting Points\n%d</string>
+    <string name="target_points">Target Points\n%d</string>
     <string name="start_button">Start!</string>
 
     <!-- Flags Activity -->
