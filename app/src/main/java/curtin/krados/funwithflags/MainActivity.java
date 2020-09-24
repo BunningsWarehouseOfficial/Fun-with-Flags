@@ -14,6 +14,7 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
     private int mStartPoints;
     private int mTargetPoints;
+    private GameInfo info;
 
     private ImageView mAppLogo;
     private TextView mStartPointsText;
@@ -30,16 +31,18 @@ public class MainActivity extends AppCompatActivity {
         mStartPoints = rand.nextInt(15 - 5) + 5;
         mTargetPoints = rand.nextInt(35 - 25) + 25;
 
+        //Updating singleton values
+        info = GameInfo.getInstance();
+        info.setStartPoints(mStartPoints);
+        info.setTargetPoints(mTargetPoints);
+
         //Retrieving references
         mAppLogo = (ImageView) findViewById(R.id.appLogo);
         mStartPointsText = (TextView) findViewById(R.id.startPointsText);
         mTargetPointsText = (TextView) findViewById(R.id.targetPointsText);
         mStartButton = (Button) findViewById(R.id.startButton);
 
-        mStartPointsText.setText(getString(R.string.start_points, mStartPoints));
-        mTargetPointsText.setText(getString(R.string.target_points, mTargetPoints));
-
-        //Implementing callbacks and setting up event handlers
+        //Implementing callbacks / setting up event handlers
         mStartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,6 +50,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //Initialising text
+        mStartPointsText.setText(getString(R.string.start_points, mStartPoints));
+        mTargetPointsText.setText(getString(R.string.target_points, mTargetPoints));
     }
 }
 

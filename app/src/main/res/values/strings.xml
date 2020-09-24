@@ -8,7 +8,15 @@
     <string name="start_button">Start!</string>
 
     <!-- Flags Activity -->
-    <string name="One Row or Column"
+    <string name="single_layout_vertical">One Column Layout</string>
+    <string name="double_layout_vertical">Two Column Layout</string>
+    <string name="triple_layout_vertical">Three Column Layout</string>
+    <string name="layout_vertical">Vertical Layout</string>
+    <string name="single_layout_horizontal">One Column Layout</string>
+    <string name="double_layout_horizontal">Two Column Layout</string>
+    <string name="triple_layout_horizontal">Three Column Layout</string>
+    <string name="layout_horizontal">Horizontal Layout</string>
+
     <string name="status_points">Current Score: %d</string>
     <string name="status_victory">You won!</string>
     <string name="status_loss">You lost!</string>
