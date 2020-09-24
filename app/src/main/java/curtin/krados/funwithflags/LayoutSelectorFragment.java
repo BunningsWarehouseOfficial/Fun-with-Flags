@@ -64,19 +64,33 @@ public class LayoutSelectorFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (mLayoutVertical) {
+                    //Switching to horizontal layout button images
                     mSingleLayoutButton.setImageResource(R.drawable.single_horizontal);
                     mDoubleLayoutButton.setImageResource(R.drawable.double_horizontal);
                     mTripleLayoutButton.setImageResource(R.drawable.triple_horizontal);
                     mDirectionLayoutButton.setImageResource(R.drawable.down_arrow);
+
+                    //Switching to horizontal layout button content descriptions
+                    mSingleLayoutButton.setContentDescription(getString(R.string.single_layout_horizontal));
+                    mDoubleLayoutButton.setContentDescription(getString(R.string.double_layout_horizontal));
+                    mTripleLayoutButton.setContentDescription(getString(R.string.triple_layout_horizontal));
+                    mDirectionLayoutButton.setContentDescription(getString(R.string.layout_horizontal));
                     mLayoutVertical = false;
 
                     //TODO actual changing of layout
                 }
                 else {
+                    //Switching to vertical layout button images
                     mSingleLayoutButton.setImageResource(R.drawable.single_vertical);
                     mDoubleLayoutButton.setImageResource(R.drawable.double_vertical);
                     mTripleLayoutButton.setImageResource(R.drawable.triple_vertical);
                     mDirectionLayoutButton.setImageResource(R.drawable.right_arrow);
+
+                    //Switching to vertical layout button content descriptions
+                    mSingleLayoutButton.setContentDescription(getString(R.string.single_layout_vertical));
+                    mDoubleLayoutButton.setContentDescription(getString(R.string.double_layout_vertical));
+                    mTripleLayoutButton.setContentDescription(getString(R.string.triple_layout_vertical));
+                    mDirectionLayoutButton.setContentDescription(getString(R.string.layout_vertical));
                     mLayoutVertical = true;
 
                     //TODO actual changing of layout
