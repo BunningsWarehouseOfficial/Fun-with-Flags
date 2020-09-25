@@ -14,7 +14,7 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
     private int mStartPoints;
     private int mTargetPoints;
-    private GameInfo info;
+    private GameInfo mInfo;
 
     private ImageView mAppLogo;
     private TextView mStartPointsText;
@@ -32,15 +32,15 @@ public class MainActivity extends AppCompatActivity {
         mTargetPoints = rand.nextInt(35 - 25) + 25;
 
         //Updating singleton values
-        info = GameInfo.getInstance();
-        info.setStartPoints(mStartPoints);
-        info.setTargetPoints(mTargetPoints);
+        mInfo = GameInfo.getInstance();
+        mInfo.setPoints(mStartPoints);
+        mInfo.setTargetPoints(mTargetPoints);
 
         //Retrieving references
-        mAppLogo = (ImageView) findViewById(R.id.appLogo);
-        mStartPointsText = (TextView) findViewById(R.id.startPointsText);
+        mAppLogo          = (ImageView) findViewById(R.id.appLogo);
+        mStartPointsText  = (TextView) findViewById(R.id.startPointsText);
         mTargetPointsText = (TextView) findViewById(R.id.targetPointsText);
-        mStartButton = (Button) findViewById(R.id.startButton);
+        mStartButton      = (Button) findViewById(R.id.startButton);
 
         //Implementing callbacks / setting up event handlers
         mStartButton.setOnClickListener(new View.OnClickListener() {

@@ -16,6 +16,7 @@
     <string name="double_layout_horizontal">Two Column Layout</string>
     <string name="triple_layout_horizontal">Three Column Layout</string>
     <string name="layout_horizontal">Horizontal Layout</string>
+    <string name="country_flag">%s Flag</string>
 
     <string name="status_points">Current Score: %d</string>
     <string name="status_victory">You won!</string>

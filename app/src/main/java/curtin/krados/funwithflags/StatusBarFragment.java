@@ -19,7 +19,7 @@ public class StatusBarFragment extends Fragment {
         mStatusBarPoints = (TextView) view.findViewById(R.id.statusBarPoints);
 
         //Initialising point value
-        int points = GameInfo.getInstance().getStartPoints();
+        int points = GameInfo.getInstance().getPoints();
         mStatusBarPoints.setText(getString(R.string.status_points, points));
 
         //TODO Updating point value (Observers with ViewModel? Or at least implement livedata into GameInfo)
