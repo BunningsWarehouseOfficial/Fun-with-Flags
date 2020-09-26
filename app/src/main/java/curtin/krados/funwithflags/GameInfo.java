@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import curtin.krados.funwithflags.questions.*;
+
 public class GameInfo {
     //Singleton
     private static GameInfo sInstance;
@@ -107,7 +109,7 @@ public class GameInfo {
             new ThreeNumQ("How many time zones does Australia have (including daylight savings)?",
                     new String[] {"3", "4", "5"},
                     false, 3),
-            new ThreeNameQ("Who is generally agreed to be the first European captain to discover Australia?",
+            new FourNameQ("Who is generally agreed to be the first European captain to discover Australia?",
                     new String[] {"Willem Janszoon", "Luís Vaz de Torres", "James Cook", "Dirk Hartog"},
                     false, 1),
             new TrueFalseQ("In the Jurassic period Australia was covered by large swathes of inland sea.",

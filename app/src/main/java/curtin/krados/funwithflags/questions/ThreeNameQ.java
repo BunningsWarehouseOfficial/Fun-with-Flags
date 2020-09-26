@@ -1,4 +1,4 @@
-package curtin.krados.funwithflags;
+package curtin.krados.funwithflags.questions;
 
 public class ThreeNameQ extends Question {
     public ThreeNameQ(String questionText, String[] answers, boolean isSpecial, int correctAnswer) {

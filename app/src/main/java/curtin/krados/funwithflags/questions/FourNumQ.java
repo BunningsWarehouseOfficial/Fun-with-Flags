@@ -1,4 +1,4 @@
-package curtin.krados.funwithflags;
+package curtin.krados.funwithflags.questions;
 
 public class FourNumQ extends Question {
     public FourNumQ(String questionText, String[] answers, boolean isSpecial, int correctAnswer) {

@@ -1,4 +1,4 @@
-package curtin.krados.funwithflags;
+package curtin.krados.funwithflags.questions;
 
 public class Question {
     private final String mQuestionText;
