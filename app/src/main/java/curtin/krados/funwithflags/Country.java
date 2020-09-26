@@ -1,16 +1,20 @@
 package curtin.krados.funwithflags;
 
+import androidx.annotation.NonNull;
+
+import java.util.List;
+
 public class Country {
     private final String mName;
     private final int mFlagId;
-    private final Question[] mQuestions;
+    private final List<Question> mQuestions;
 
     //Constructor
-    public Country(String name, int flagId, Question[] questions) {
+    public Country(String name, int flagId, @NonNull List<Question> questions) {
         mName = name;
         mFlagId = flagId;
         mQuestions = questions;
-    } //TODO constructor with no Question[] parameter?
+    }
 
     //Accessors
     public String getName() {
