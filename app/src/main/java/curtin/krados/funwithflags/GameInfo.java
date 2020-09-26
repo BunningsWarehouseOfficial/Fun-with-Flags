@@ -18,16 +18,12 @@ public class GameInfo {
 
     private int mPoints;
     private int mTargetPoints;
-    private int mLayoutNumber;
-    private boolean mVerticalLayout;
     private List<Country> mCountries;
 
     //Constructor
     private GameInfo() {
         mPoints = 0;
         mTargetPoints = 0;
-        mLayoutNumber = 2;
-        mVerticalLayout = true;
         mCountries = new ArrayList<>();
         createCountries();
     }
@@ -38,12 +34,6 @@ public class GameInfo {
     }
     public int getTargetPoints() {
         return mTargetPoints;
-    }
-    public int getLayoutNumber() {
-        return mLayoutNumber;
-    }
-    public boolean isVerticalLayout() {
-        return mVerticalLayout;
     }
     public List<Country> getCountries() {
         return mCountries;

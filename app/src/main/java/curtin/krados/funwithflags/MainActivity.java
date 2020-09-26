@@ -1,6 +1,7 @@
 package curtin.krados.funwithflags;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LifecycleOwner;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +12,7 @@ import android.widget.TextView;
 
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements LifecycleOwner {
     private int mStartPoints;
     private int mTargetPoints;
     private GameInfo mInfo;
@@ -58,7 +59,8 @@ public class MainActivity extends AppCompatActivity {
 }
 
 //HIGH PRIORITY
-
+//TODO fix issue with double line text in flag cells for 3 column layout
+//TODO fix ultra-wide horizontal spacing between flags for 3 row layout
 
 //MEDIUM PRIORITY
 //TODO Ensure statusText changes between points and victory status

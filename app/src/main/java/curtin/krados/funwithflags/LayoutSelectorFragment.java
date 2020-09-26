@@ -7,9 +7,11 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 public class LayoutSelectorFragment extends Fragment {
     private boolean mVerticalLayout = true; //TODO consolidate with singleton?
+    private LayoutViewModel model;
 
     private ImageButton mSingleLayoutButton;
     private ImageButton mDoubleLayoutButton;
@@ -19,6 +21,7 @@ public class LayoutSelectorFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup ui, Bundle bundle) {
         View view = inflater.inflate(R.layout.fragment_layout_selector, ui, false);
+        model = new ViewModelProvider(requireActivity()).get(LayoutViewModel.class);
 
         //Retrieving references
         mSingleLayoutButton    = (ImageButton) view.findViewById(R.id.singleLayoutButton);
@@ -30,34 +33,19 @@ public class LayoutSelectorFragment extends Fragment {
         mSingleLayoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mVerticalLayout) {
-                    //TODO actual changing of layout
-                }
-                else {
-                    //TODO actual changing of layout
-                }
+                model.updateLayoutNumber(1);
             }
         });
         mDoubleLayoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mVerticalLayout) {
-                    //TODO actual changing of layout
-                }
-                else {
-                    //TODO actual changing of layout
-                }
+                model.updateLayoutNumber(2);
             }
         });
         mTripleLayoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mVerticalLayout) {
-                    //TODO actual changing of layout
-                }
-                else {
-                    //TODO actual changing of layout
-                }
+                model.updateLayoutNumber(3);
             }
         });
         mDirectionLayoutButton.setOnClickListener(new View.OnClickListener() {
@@ -75,9 +63,8 @@ public class LayoutSelectorFragment extends Fragment {
                     mDoubleLayoutButton.setContentDescription(getString(R.string.double_layout_horizontal));
                     mTripleLayoutButton.setContentDescription(getString(R.string.triple_layout_horizontal));
                     mDirectionLayoutButton.setContentDescription(getString(R.string.layout_horizontal));
+                    model.updateVerticalLayout(false);
                     mVerticalLayout = false;
-
-                    //TODO actual changing of layout
                 }
                 else {
                     //Switching to vertical layout button images
@@ -91,9 +78,8 @@ public class LayoutSelectorFragment extends Fragment {
                     mDoubleLayoutButton.setContentDescription(getString(R.string.double_layout_vertical));
                     mTripleLayoutButton.setContentDescription(getString(R.string.triple_layout_vertical));
                     mDirectionLayoutButton.setContentDescription(getString(R.string.layout_vertical));
+                    model.updateVerticalLayout(true);
                     mVerticalLayout = true;
-
-                    //TODO actual changing of layout
                 }
             }
         });

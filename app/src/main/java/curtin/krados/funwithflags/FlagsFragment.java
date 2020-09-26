@@ -8,14 +8,14 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
 public class FlagsFragment extends Fragment {
-    private List<Country> mCountries;
-
     //RecyclerView ViewHolder implementation
     private class FlagViewHolder extends RecyclerView.ViewHolder {
         private ImageButton mFlagImage;
@@ -28,12 +28,6 @@ public class FlagsFragment extends Fragment {
             //Retrieving references
             mFlagImage = itemView.findViewById(R.id.flagImage);
             mFlagName  = itemView.findViewById(R.id.flagName);
-
-            //Setting square to correct size //TODO clear if not needed
-//            int size = parent.getMeasuredHeight() / MapData.HEIGHT + 1;
-//            ViewGroup.LayoutParams lp = itemView.getLayoutParams();
-//            lp.width = size;
-//            lp.height = size;
         }
 
         public void bind(Country country) {
@@ -73,25 +67,55 @@ public class FlagsFragment extends Fragment {
         }
     }
 
+    private List<Country> mCountries;
+    LayoutViewModel model;
+    RecyclerView rv;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup ui, Bundle bundle) {
         View view = inflater.inflate(R.layout.fragment_flag_selector, ui, false);
-        mCountries = GameInfo.getInstance().getCountries();
+        model = new ViewModelProvider(requireActivity()).get(LayoutViewModel.class);
+        GameInfo info = GameInfo.getInstance();
+        mCountries = info.getCountries();
 
         //Setting up map Recycler View
-        RecyclerView rv = (RecyclerView) view.findViewById(R.id.flagsRecyclerView);
-        rv.setLayoutManager(new GridLayoutManager(
-                getActivity(), //TODO perhaps generalise this using singleton for reuse if somebody wanted to change default layout state
-                2,
-                GridLayoutManager.VERTICAL,
-                false));
+        rv = (RecyclerView) view.findViewById(R.id.flagsRecyclerView);
+        updateLayoutManager(model.getLayoutNumber().getValue(), model.isVerticalLayout().getValue());
         FlagAdapter adapter = new FlagAdapter(mCountries);
         rv.setAdapter(adapter);
 
-        //Retrieving references
-        //...
+        //Setting up observer listeners to update the UI when a layout parameter changes
+        model.getLayoutNumber().observe(getViewLifecycleOwner(), new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer layoutNumber) {
+                updateLayoutManager(layoutNumber, model.isVerticalLayout().getValue());
+            }
+        });
+        model.isVerticalLayout().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean isVertical) {
+                updateLayoutManager(model.getLayoutNumber().getValue(), isVertical);
+            }
+        });
 
-        //TODO Updating layout
         return view;
+    }
+
+    //Private Methods
+    private void updateLayoutManager(Integer layoutNumber, Boolean isVertical) {
+        if (isVertical) {
+            rv.setLayoutManager(new GridLayoutManager(
+                    getActivity(),
+                    layoutNumber, //spanCount: no. of columns in recyclerView
+                    GridLayoutManager.VERTICAL, //The orientation of the recyclerView
+                    false));
+        }
+        else {
+            rv.setLayoutManager(new GridLayoutManager(
+                    getActivity(),
+                    layoutNumber, //spanCount: no. of columns in recyclerView
+                    GridLayoutManager.HORIZONTAL, //The orientation of the recyclerView
+                    false));
+        }
     }
 }

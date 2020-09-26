@@ -2,14 +2,14 @@ package curtin.krados.funwithflags;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.LifecycleOwner;
 
-public class FlagsActivity extends AppCompatActivity {
+public class FlagsActivity extends AppCompatActivity implements LifecycleOwner { //TODO implement needed here?
     private static final String START = "curtin.krados.funwithflags.start";
     private static final String TARGET = "curtin.krados.funwithflags.target";
 
