@@ -92,7 +92,7 @@ public class FlagsFragment extends Fragment {
 
     // ========== //
 
-    private List<Country> mCountries; //TODO change name to not be the same as private class names
+    private List<Country> mCountries;
     LayoutViewModel model;
     RecyclerView rv;
 

@@ -77,16 +77,3 @@ public class MainActivity extends AppCompatActivity {
         mTargetPointsText.setText(getString(R.string.target_points, mTargetPoints));
     }
 }
-
-//HIGH PRIORITY
-//TODO Fix ultra-wide horizontal spacing between flags for 3 row layout
-//TODO Ensure statusText changes between points and victory status
-
-//MEDIUM PRIORITY
-//TODO Fix issue with double line text in flag cells for 3 column layout
-
-//LOW PRIORITY
-//TODO Change TrueFalseQ to override parent method instead of pre-filling incorrect value in constructor before correcting
-//TODO Set content description of layout selector images to change as the images themselves change
-//TODO Put layout files into directories for each activity (see GeoQuiz and textbook)
-//TODO Make the flag the background in question screens

@@ -49,7 +49,7 @@ public class SelectQuestionActivity extends AppCompatActivity {
         return intent;
     }
 
-    //todo comment
+    //Used to swap out the questions fragment with an answers fragment
     public void swapToAnswers() {
         FragmentTransaction ft = mFm.beginTransaction();
         ft.replace(R.id.questionsFrame, new AnswerQuestionFragment())
@@ -57,6 +57,7 @@ public class SelectQuestionActivity extends AppCompatActivity {
                 .commit();
         findViewById(R.id.layoutSelectorFrame).setVisibility(View.INVISIBLE);
     }
+    //Used to swap out the answers fragment with a questions fragment
     public void swapToQuestions() {
         FragmentTransaction ft = mFm.beginTransaction();
         ft.replace(R.id.questionsFrame, new SelectQuestionFragment())

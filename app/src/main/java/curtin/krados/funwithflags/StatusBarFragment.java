@@ -61,7 +61,6 @@ public class StatusBarFragment extends Fragment {
             }
         });
 
-        //TODO Updating point value (Observers with ViewModel? Or at least implement livedata into GameInfo)
         return view;
     }
 }

@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 public class LayoutSelectorFragment extends Fragment {
-    private boolean mVerticalLayout = true; //TODO consolidate with singleton?
+    private boolean mVerticalLayout = true;
     private LayoutViewModel model;
 
     private ImageButton mSingleLayoutButton;

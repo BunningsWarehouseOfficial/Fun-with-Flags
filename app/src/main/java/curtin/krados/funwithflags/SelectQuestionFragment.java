@@ -48,7 +48,7 @@ public class SelectQuestionFragment extends Fragment {
             mQuestionButton.setContentDescription(getString(R.string.question_button_description, questionNum));
             if (question.isAnswered()) {
                 mQuestionButton.setEnabled(false);
-                mQuestionButton.setBackgroundColor(Color.parseColor("#aaaaaa")); //TODO test after answering question
+                mQuestionButton.setBackgroundColor(Color.parseColor("#aaaaaa"));
             }
             else {
                 mQuestionButton.setEnabled(true);
@@ -95,7 +95,7 @@ public class SelectQuestionFragment extends Fragment {
 
     // ========== //
 
-    private List<Question> mQuestions; //TODO change name to not be the same as private class names
+    private List<Question> mQuestions;
     private LayoutViewModel mModel;
     private RecyclerView mRv;
 
