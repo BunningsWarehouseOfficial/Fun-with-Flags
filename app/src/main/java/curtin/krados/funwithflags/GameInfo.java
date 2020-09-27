@@ -182,13 +182,22 @@ public class GameInfo {
         //Bosnia and Herzegovina
         Question[] baQ = new Question[] {
                 new TrueFalseQ("Sarajevo is both the capital city and largest city of Bosnia and Herzegovina.",
-                    false, false)
+                    false, false),
+                new ThreeNumQ("What is the population of Bosnia and Herzegovina?",
+                    new String[] {"2,000,000", "3,300,000", "5,600,000"},
+                    false, 2)
         };
 
         //Barbados
         Question[] bbQ = new Question[] {
                 new TrueFalseQ("Bridgetown is both the capital city and largest city of Barbados.",
-                    false, true)
+                    false, true),
+                new ThreeNumQ("What is the population of Barbados?",
+                    new String[] {"280,000", "530,000", "2,400,000"},
+                    false, 1),
+                new TwoNumQ("What is the calling code of Bosnia and Herzegovina?",
+                    new String[] {"281", "387"},
+                    false, 2)
         };
 
         //Canada
