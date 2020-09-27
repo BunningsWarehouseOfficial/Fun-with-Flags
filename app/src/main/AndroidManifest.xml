@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".FlagsActivity" />
+        <activity android:name=".SelectQuestionActivity" />
     </application>
 
 </manifest>

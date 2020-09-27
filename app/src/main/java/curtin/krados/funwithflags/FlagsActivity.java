@@ -7,12 +7,8 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.LifecycleOwner;
 
-public class FlagsActivity extends AppCompatActivity implements LifecycleOwner { //TODO implement needed here?
-    private static final String START = "curtin.krados.funwithflags.start";
-    private static final String TARGET = "curtin.krados.funwithflags.target";
-
+public class FlagsActivity extends AppCompatActivity {
     private LayoutSelectorFragment mFragA;
     private FlagsFragment mFragB;
     private StatusBarFragment mFragC;
@@ -43,11 +39,15 @@ public class FlagsActivity extends AppCompatActivity implements LifecycleOwner {
         ft.commit();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        GameInfo.getInstance().setButtonNeeded(false);
+    }
+
     //Decoupling method for starting the activity
-    public static Intent getIntent(Context c, int startPoints, int targetPoints) {
+    public static Intent getIntent(Context c) {
         Intent intent = new Intent(c, FlagsActivity.class);
-        intent.putExtra(START, startPoints);
-        intent.putExtra(TARGET, targetPoints);
         return intent;
     }
 }

@@ -25,4 +25,7 @@ public class Country {
     public int getFlagId() {
         return mFlagId;
     }
+    public List<Question> getQuestions() {
+        return mQuestions;
+    }
 }

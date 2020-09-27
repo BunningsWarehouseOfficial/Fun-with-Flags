@@ -5,17 +5,8 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 public class LayoutViewModel extends ViewModel {
-    //Singleton
-    private static LayoutViewModel sInstance;
-    public static LayoutViewModel getInstance() {
-        if (sInstance == null) {
-            sInstance = new LayoutViewModel();
-        }
-        return sInstance;
-    }
-
-    private MutableLiveData<Integer> mLayoutNumber;// = new MutableLiveData<>();
-    private MutableLiveData<Boolean> mVerticalLayout;// = new MutableLiveData<>();
+    private MutableLiveData<Integer> mLayoutNumber;   //Number of columns/rows in gridLayoutManager
+    private MutableLiveData<Boolean> mVerticalLayout; //Determines orientation of gridLayoutManager
 
     //Constructor
     public LayoutViewModel() {
@@ -40,6 +31,4 @@ public class LayoutViewModel extends ViewModel {
     public void updateVerticalLayout(boolean verticalLayout) {
         mVerticalLayout.setValue(verticalLayout);
     }
-
-
 }

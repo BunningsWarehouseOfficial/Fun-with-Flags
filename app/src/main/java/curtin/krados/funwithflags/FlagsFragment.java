@@ -1,11 +1,13 @@
 package curtin.krados.funwithflags;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
@@ -15,39 +17,60 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import curtin.krados.funwithflags.questions.Question;
+
 public class FlagsFragment extends Fragment {
     //RecyclerView ViewHolder implementation
     private class FlagViewHolder extends RecyclerView.ViewHolder {
         private ImageButton mFlagImage;
         private TextView mFlagName;
+        private GameInfo info;
 
         //Constructor
         public FlagViewHolder(LayoutInflater li, ViewGroup parent) {
             super(li.inflate(R.layout.grid_cell_flag, parent, false));
+            info = GameInfo.getInstance();
 
             //Retrieving references
-            mFlagImage = itemView.findViewById(R.id.flagImage);
-            mFlagName  = itemView.findViewById(R.id.flagName);
+            mFlagImage = (ImageButton) itemView.findViewById(R.id.flagImage);
+            mFlagName  = (TextView) itemView.findViewById(R.id.flagName);
         }
 
-        public void bind(Country country) {
+        public void bind(final Country country) {
             mFlagImage.setImageResource(country.getFlagId());
 
             String name = country.getName();
             mFlagImage.setContentDescription(getString(R.string.country_flag, name));
             mFlagName.setText(name);
+
+            mFlagImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    info.setCurrentCountry(country);
+
+                    //Check if there are any unredeemed special points to be applied
+                    if (info.getSpecialPoints() != 0) {
+                        for (Question q : country.getQuestions()) {
+                            q.setPoints(q.getPoints() + GameInfo.SPECIAL_BONUS);
+                        }
+                        Toast.makeText(getActivity(), R.string.applied_special, Toast.LENGTH_SHORT).show();
+                        info.setSpecialPoints(0); //Reset unredeemed special points
+                    }
+
+                    Intent intent = SelectQuestionActivity.getIntent(getActivity());
+                    startActivity(intent);
+                }
+            });
         }
     }
 
     //RecyclerView Adapter implementation
     private class FlagAdapter extends RecyclerView.Adapter<FlagViewHolder> {
         private List<Country> mCountries;
-        private GameInfo mInfo;
 
         //Constructor
         public FlagAdapter(List<Country> countries) {
             mCountries = countries;
-            mInfo = GameInfo.getInstance(); //TODO check this later
         }
 
         @Override
@@ -67,7 +90,9 @@ public class FlagsFragment extends Fragment {
         }
     }
 
-    private List<Country> mCountries;
+    // ========== //
+
+    private List<Country> mCountries; //TODO change name to not be the same as private class names
     LayoutViewModel model;
     RecyclerView rv;
 
@@ -101,7 +126,7 @@ public class FlagsFragment extends Fragment {
         return view;
     }
 
-    //Private Methods
+    //PRIVATE METHODS
     private void updateLayoutManager(Integer layoutNumber, Boolean isVertical) {
         if (isVertical) {
             rv.setLayoutManager(new GridLayoutManager(

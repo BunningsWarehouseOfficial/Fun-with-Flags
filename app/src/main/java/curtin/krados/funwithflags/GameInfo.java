@@ -1,5 +1,8 @@
 package curtin.krados.funwithflags;
 
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -16,35 +19,76 @@ public class GameInfo {
         return sInstance;
     }
 
-    private int mPoints;
+    public static final int SPECIAL_BONUS = 10;
+
+    private MutableLiveData<Integer> mPoints;
     private int mTargetPoints;
+    private boolean mButtonNeeded; //Determines the presence of a back button in status bar
     private List<Country> mCountries;
+    private Country currentCountry;
+    private Question currentQuestion;
+    private int specialPoints;
+    private boolean ended;
 
     //Constructor
     private GameInfo() {
-        mPoints = 0;
+        mPoints = new MutableLiveData<>();
+        mPoints.setValue(2);
         mTargetPoints = 0;
         mCountries = new ArrayList<>();
+        mButtonNeeded = false;
+        specialPoints = 0;
+        ended = false;
         createCountries();
     }
 
     //Accessors
-    public int getPoints() {
+    public LiveData<Integer> getPoints() {
         return mPoints;
     }
     public int getTargetPoints() {
         return mTargetPoints;
     }
+    public boolean isButtonNeeded() {
+        return mButtonNeeded;
+    }
     public List<Country> getCountries() {
         return mCountries;
+    }
+    public Country getCurrentCountry() {
+        return currentCountry;
+    }
+    public Question getCurrentQuestion() {
+        return currentQuestion;
+    }
+    public int getSpecialPoints() {
+        return specialPoints;
+    }
+    public boolean isEnded() {
+        return ended;
     }
 
     //Mutators
     public void setPoints(int points) {
-        mPoints = points;
+        mPoints.setValue(points);
     }
     public void setTargetPoints(int targetPoints) {
         mTargetPoints = targetPoints;
+    }
+    public void setButtonNeeded(boolean buttonNeeded) {
+        mButtonNeeded = buttonNeeded;
+    }
+    public void setCurrentCountry(Country currentCountry) {
+        this.currentCountry = currentCountry;
+    }
+    public void setCurrentQuestion(Question currentQuestion) {
+        this.currentQuestion = currentQuestion;
+    }
+    public void setSpecialPoints(int specialPoints) {
+        this.specialPoints = specialPoints;
+    }
+    public void setEnded(boolean ended) {
+        this.ended = ended;
     }
 
     //Hardcoded implementation of country names, flags and questions
@@ -117,7 +161,7 @@ public class GameInfo {
         //Azerbaijan
         Question[] azQ = new Question[] {
             new TrueFalseQ("Azerbaijan is a former Soviet socialist republic.",
-                    false, false),
+                    false, true),
             new ThreeNumQ("What is the population of Azerbaijan?",
                     new String[] {"5,000,000", "10,000,000", "20,000,000"},
                     false, 2),
@@ -137,50 +181,74 @@ public class GameInfo {
 
         //Bosnia and Herzegovina
         Question[] baQ = new Question[] {
+                new TrueFalseQ("Sarajevo is both the capital city and largest city of Bosnia and Herzegovina.",
+                    false, false)
         };
 
         //Barbados
         Question[] bbQ = new Question[] {
+                new TrueFalseQ("Bridgetown is both the capital city and largest city of Barbados.",
+                    false, true)
         };
 
         //Canada
         Question[] caQ = new Question[] {
+                new TrueFalseQ("Ottawa is both the capital city and largest city of Canada.",
+                    false, false)
         };
 
         //Switzerland
         Question[] chQ = new Question[] {
+                new TrueFalseQ("Bern is both the capital city and largest city of Switzerland.",
+                    false, false)
         };
 
         //China
         Question[] cnQ = new Question[] {
+                new TrueFalseQ("Beijing is both the capital city and largest city of China.",
+                    false, false)
         };
 
         //Czechia
         Question[] czQ = new Question[] {
+                new TrueFalseQ("Prague is both the capital city and largest city of Czechia.",
+                    false, true)
         };
 
         //Denmark
         Question[] dkQ = new Question[] {
+                new TrueFalseQ("Copenhagen is both the capital city and largest city of Denmark.",
+                    false, true)
         };
 
         //Greece
         Question[] grQ = new Question[] {
+                new TrueFalseQ("Athens is both the capital city and largest city of Greece.",
+                    false, false)
         };
 
         //Japan
         Question[] jpQ = new Question[] {
+                new TrueFalseQ("Tokyo is both the capital city and largest city of Japan.",
+                    false, false)
         };
 
         //South Korea
         Question[] krQ = new Question[] {
+                new TrueFalseQ("Seoul is both the capital city and largest city of South Korea.",
+                    false, true)
         };
 
         //Qatar
         Question[] qaQ = new Question[] {
+                new TrueFalseQ("Doha is both the capital city and largest city of Qatar.",
+                    false, true)
         };
 
         //Vietnam
         Question[] vnQ = new Question[] {
+                new TrueFalseQ("Hanoi is both the capital city and largest city of Vietnam.",
+                    false, false)
         };
 
         //Combining country name, flag and questions

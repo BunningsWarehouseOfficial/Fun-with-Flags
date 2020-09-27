@@ -27,8 +27,37 @@ public class Question {
         }
     }
 
+    //Accessors
+    public String getQuestionText() {
+        return mQuestionText;
+    }
+    public int getPoints() {
+        return mPoints;
+    }
+    public int getPenalty() {
+        return mPenalty;
+    }
+    public boolean isSpecial() {
+        return mIsSpecial;
+    }
+    public int getCorrectAnswer() {
+        return mCorrectAnswer;
+    }
+    public String[] getAnswers() {
+        return mAnswers;
+    }
+    public boolean isAnswered() {
+        return mIsAnswered;
+    }
+
     //Mutator
+    public void setPoints(int points) {
+        mPoints = points;
+    }
     public void setCorrectAnswer(int correctAnswer) {
         mCorrectAnswer = correctAnswer;
+    }
+    public void setAnswered(boolean answered) {
+        mIsAnswered = answered;
     }
 }
